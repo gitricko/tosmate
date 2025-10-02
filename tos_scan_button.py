@@ -20,7 +20,7 @@ def click_scan_button():
 
     # Locate the Scan button on screen
     try:
-        button_location = pyautogui.locateOnScreen(SCAN_BUTTON_IMAGE, confidence=0.8)
+        button_location = pyautogui.locateOnScreen(SCAN_BUTTON_IMAGE, confidence=0.7)
         if button_location:
             button_center = pyautogui.center(button_location)
             pyautogui.click(button_center)
@@ -33,5 +33,5 @@ def click_scan_button():
 if __name__ == "__main__":
     while True:
         click_scan_button()
-        time.sleep(20)  # Wait before next scan (adjust as needed)
+        time.sleep(25)  # Wait before next scan (adjust as needed)
 
