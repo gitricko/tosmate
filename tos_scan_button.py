@@ -33,5 +33,5 @@ def click_scan_button():
 if __name__ == "__main__":
     while True:
         click_scan_button()
-        time.sleep(30)  # Wait before next scan (adjust as needed)
+        time.sleep(20)  # Wait before next scan (adjust as needed)
 
