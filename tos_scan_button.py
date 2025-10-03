@@ -18,15 +18,18 @@ def click_scan_button():
         print(f"Error: Screenshot file '{SCAN_BUTTON_IMAGE}' not found.")
         return
 
-    # Locate the Scan button on screen
+    # Locate all Scan buttons on screen
     try:
-        button_location = pyautogui.locateOnScreen(SCAN_BUTTON_IMAGE, confidence=0.7)
-        if button_location:
-            button_center = pyautogui.center(button_location)
-            pyautogui.click(button_center)
-            print("Scan button clicked successfully!")
+        button_locations = list(pyautogui.locateAllOnScreen(SCAN_BUTTON_IMAGE, confidence=0.8))
+        if button_locations:
+            print(f"Found {len(button_locations)} 'Scan' button(s). Clicking all...")
+            for i, location in enumerate(button_locations, 1):
+                button_center = pyautogui.center(location)
+                pyautogui.click(button_center)
+                print(f"Clicked Scan button #{i}")
+                time.sleep(1)  # Brief pause between clicks to avoid overwhelming TOS
         else:
-            print("Scan button not found—check screenshot or TOS window.")
+            print("No Scan buttons found—check screenshot or TOS window.")
     except pyautogui.ImageNotFoundException:
         print("Error: Could not locate Scan button. Ensure TOS is open and screenshot matches.")
 
